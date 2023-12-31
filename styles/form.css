@@ -1,0 +1,105 @@
+.red{
+    border: 1px solid  #DC3545 !important;
+    box-shadow: 0 0 3px  #DC3545 !important;
+}
+
+.redMessage{
+  color:#DC3545 ;
+  /* text-align: center; */
+  text-wrap: wrap;
+  line-height: 20px;
+}
+
+.green{
+    border: 1px solid green !important;
+    box-shadow: 0 0 3px green !important;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+label{
+  font-weight: bold !important;
+}
+
+fieldset label{
+  font-weight: 500 !important;
+}
+
+legend{
+  font-weight: bold !important;
+}
+
+button{
+  border: none;
+}
+
+.link{
+  margin: 10px;
+  text-decoration: none;
+}
+
+.link:hover{
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.center.h1{
+  text-align: center;
+}
+
+.linkDiv{
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.toggle-code:disabled {
+  background: #e7e8e9;
+  color: #9fa3a9;
+  cursor: not-allowed;
+}
+
+#mainPage{
+  flex-direction: column;
+}
+
+#main{
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+
+}
+
+.foot{
+  margin-top: auto;
+}
+
+.spinner {
+  animation-name: spin;
+  animation-duration: 500ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width:480px) and (min-width: 320px)  {
+    .linkDiv{
+      flex-direction: column;
+      align-items: center;
+    }
+}
