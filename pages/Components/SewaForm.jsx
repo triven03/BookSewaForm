@@ -2,7 +2,6 @@
 
 import React, {  useState,useEffect} from "react";
 import { useRouter } from 'next/router';
-// import { useNavigate } from 'react-router-dom';
 
 function SewaForm(props) {
   const router = useRouter();
@@ -104,7 +103,7 @@ try {
     console.log(data.id.status);
     if (data.id.status==200) {
       router.push({
-        pathname: '/Submitted',
+        pathname: '/Components/Submitted',
         query: { savedData: JSON.stringify(data)},
       });
       // router.push('/Submitted');
@@ -256,7 +255,7 @@ function checkData(val) {
 
 
   let Datetime= new Date();
-  let ddmmyy= Datetime.toLocaleDateString('en-GB');
+  let ddmmyy= Datetime;
   console.log(ddmmyy);
   console.log(typeof(ddmmyy));
 

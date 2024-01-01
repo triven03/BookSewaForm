@@ -29,7 +29,7 @@ export default function Submitted() {
     };
 
   return (
-    <div className="demo-page">
+    <div className="demo-page" id="mainPage">
         <main className="demo-page-content" id="main">
           
           <section className="container">
