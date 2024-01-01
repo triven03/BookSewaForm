@@ -3,7 +3,7 @@ import PulseLoader from 'react-spinners/PulseLoader';
 
 const LoadingButton = ({title, loading}) => {
   return (
-    <button className="toggle-code" id="submit" disabled>
+    <button className="toggle-code" id="submit" >
     {
       loading ? 
       <PulseLoader
