@@ -1,8 +1,9 @@
-tm= new Date;
+import moment  from 'moment';
 
-dt=tm.toLocaleDateString('en-GB');
-dt=tm.toLocaleDateString('en-GB');
-dt=tm.toLocaleDateString('en-GB');
+let tm= new Date();
 
-console.log(tm);
-console.log(dt);
+let dt=new Date("01-01-2024")
+
+const formattedDate = moment(tm).format('MM/DD/YYYY');
+console.log(formattedDate);
+console.log(typeof formattedDate);

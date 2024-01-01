@@ -1,7 +1,8 @@
 {
-  "name": "myapp3",
+  "name": "sweaform",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -10,8 +11,10 @@
   },
   "dependencies": {
     "googleapis": "^129.0.0",
+    "moment": "^2.30.1",
     "next": "14.0.4",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "react-spinners": "^0.13.8"
   }
 }

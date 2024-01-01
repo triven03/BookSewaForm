@@ -2,9 +2,12 @@
 
 import React, {  useState,useEffect} from "react";
 import { useRouter } from 'next/router';
+import moment  from 'moment';
+import LodingButton from './LodingButton'
 
 function SewaForm(props) {
   const router = useRouter();
+  const [loading, setLoading] = useState(false)
   const [oldData, setoldData] = useState({});
   const [update, setUpdate] = useState(false);
   const [range, setRange] = useState("");
@@ -76,12 +79,13 @@ function SewaForm(props) {
   
   const handleSubmit = async (event) => {
     event.preventDefault();
-    // console.log(inputVal);
+    setLoading(true)
     let time= new Date()
-    let localdate=time.toLocaleDateString();
+    const formattedDate = moment(time).format('MM/DD/YYYY');
+    // let localdate=time.toLocaleDateString();
     let formData= new FormData(event.target);
     let dataF=[]
-    dataF.push(localdate);
+    dataF.push(`=Now()`);
     formData.forEach((v,k)=>{
       dataF.push(v);
     })
@@ -102,6 +106,7 @@ try {
     const data = await response.json()
     console.log(data.id.status);
     if (data.id.status==200) {
+      setLoading(false)
       router.push({
         pathname: '/Components/Submitted',
         query: { savedData: JSON.stringify(data)},
@@ -420,9 +425,10 @@ function checkData(val) {
 
           <details>
             <summary>
-              <button className="toggle-code" id="submit">
+              {/* <button className="toggle-code" id="submit">
                 Submit
-              </button>
+              </button> */}
+              <LodingButton title={'Submit'} loading={loading}/>
             </summary>
           </details>
          </form>

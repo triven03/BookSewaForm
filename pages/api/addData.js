@@ -1,9 +1,7 @@
 import { google } from 'googleapis';
 import credentials from '../../files/key.json';
+import moment  from 'moment';
 
-  let time= new Date()
-  let localdate=time.toLocaleDateString();
-  
   // const data = [
   //   [localdate,'Cg05krd3',9755676168, "Jaggi Das","Raipur","Dhmatari","Kurud","CG Special Team",50,20,10,20,"हाँ"]
   // ];
@@ -26,7 +24,7 @@ import credentials from '../../files/key.json';
         auth: auth,
         spreadsheetId: spreadsheetId,
         range: 'All', 
-        valueInputOption: 'RAW',
+        valueInputOption: 'USER_ENTERED',
         resource: {
           values: data,
         },
