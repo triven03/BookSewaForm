@@ -9,7 +9,7 @@ const LoadingButton = ({title, loading}) => {
       <PulseLoader
         color="#e4e7e7"
         size={6}
-      /> : title + ' '     
+      /> : title      
     }
     </button>
   )

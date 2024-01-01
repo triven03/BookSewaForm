@@ -62,7 +62,7 @@ import moment  from 'moment';
               auth: auth,
               spreadsheetId: spreadsheetId,
               range: range, // Update the range as needed
-              valueInputOption: 'RAW',
+              valueInputOption: 'USER_ENTERED',
               resource: {
                 values: newData,
               },

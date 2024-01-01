@@ -16,9 +16,7 @@ function SewaForm(props) {
 
   const [Members,setMembers]=useState([]);
 
-    // if (localStorage.getItem("Members").length) {
-    //     setMembers(localStorage.getItem("Members"))
-    // }
+   
 
   const [radioInpt, setradioInpt]=useState({
     sendyn: "हाँ"
@@ -45,7 +43,13 @@ function SewaForm(props) {
   
   useEffect(() => {
     document.title = "Sewa Form";  
-   
+    
+    // if (localStorage.getItem("Members")){
+
+    //   let memData= JSON.parse(localStorage.getItem("Members"))
+    //   console.log(memData);
+    //     setMembers(current => [...current, ...memData])
+    // }
     const sData = router.query.formData;
 
     if (sData) {
@@ -79,6 +83,7 @@ function SewaForm(props) {
   
   const handleSubmit = async (event) => {
     event.preventDefault();
+  
     setLoading(true)
     let time= new Date()
     const formattedDate = moment(time).format('MM/DD/YYYY');
@@ -107,6 +112,7 @@ try {
     console.log(data.id.status);
     if (data.id.status==200) {
       setLoading(false)
+
       router.push({
         pathname: '/Components/Submitted',
         query: { savedData: JSON.stringify(data)},
@@ -131,10 +137,8 @@ try {
     try {
       if (mobNumber.length===10) {
 
-        if (Members.length) {
-
-        }
-        else{
+        // s
+        
           const data = [];
           const sheetID = '1_HttrXdduKB0p3JJT4X6QbRfupkMWAXvvIRoCDlUIiU';
           const base = `https://docs.google.com/spreadsheets/d/${sheetID}/gviz/tq?`;
@@ -175,8 +179,12 @@ try {
                   obj["id"]=id;
   
                   data.push(obj);
+                //  setMembers(...Members,obj)
+                //  setMembers(current => [...current, obj])
 
-                localStorage.setItem("Members", data);
+                // localStorage.setItem("Members", JSON.stringify(Members));
+                // console.log(Members);
+
                 // console.log(data[0]);
                 setData(data[0]);
                 setmessageDisplay('none')
@@ -191,7 +199,7 @@ try {
           })   
         }
  
-      }
+      
 
       else{
           clearData();
@@ -258,11 +266,6 @@ function checkData(val) {
     setradioInpt({[e.target.name]: e.target.value });
   };
 
-
-  let Datetime= new Date();
-  let ddmmyy= Datetime;
-  console.log(ddmmyy);
-  console.log(typeof(ddmmyy));
 
   return (
     <div className="demo-page" id="mainPage">
