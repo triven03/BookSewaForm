@@ -1,9 +1,18 @@
 import moment  from 'moment';
 
-let tm= new Date();
+const showFormTimeStart = 68400;
+const showFormTimeEnd = 75600;
 
-let dt=new Date("01-01-2024")
+const currentTime = new Date();
+let h=currentTime.getHours();
+let m=currentTime.getMinutes();
+let s=currentTime.getSeconds();
 
-const formattedDate = moment(tm).format('MM/DD/YYYY');
-console.log(formattedDate);
-console.log(typeof formattedDate);
+let totalTime = h*3600 + m *60 + s
+let count;
+if (totalTime< showFormTimeStart) {
+    count=showFormTimeStart-totalTime;
+}
+else{
+    count=totalTime-showFormTimeStart
+}

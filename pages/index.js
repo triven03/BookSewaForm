@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import styles from '../styles/Home.module.css'
 import SewaForm from './Components/SewaForm.jsx';
+import Timer from './Components/Timer.jsx';
 
 
 const inter = Inter({ subsets: ['latin'] })
@@ -19,7 +20,8 @@ export default function Home() {
       {/* <main className={`${styles.main} ${inter.className}`}> */}
       <main >
         
-      <SewaForm/>
+      {/* <SewaForm/> */}
+      <Timer/>
       </main>
     </>
   )
