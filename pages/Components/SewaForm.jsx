@@ -4,6 +4,7 @@ import React, {  useState,useEffect} from "react";
 import { useRouter } from 'next/router';
 import moment  from 'moment';
 import LodingButton from './LodingButton'
+import { PiWarningOctagonFill } from "react-icons/pi";
 
 function SewaForm(props) {
   const router = useRouter();
@@ -24,6 +25,8 @@ function SewaForm(props) {
 
 
   const [messageDisplay,setmessageDisplay]=useState('none')
+  const [formSubmit,setformSubmit]=useState('none')
+  const [btnDisable,setbtnDisable]=useState(false)
   const [mobNum,setmobNum]=useState("")
   const [mobClass,setmobClass]=useState("icon-right")
   const [inputVal, setinputVal] = useState({
@@ -86,11 +89,11 @@ function SewaForm(props) {
   
     setLoading(true)
     let time= new Date()
-    const formattedDate = moment(time).format('MM/DD/YYYY');
+    const formattedDate = moment(time).format('l');
     // let localdate=time.toLocaleDateString();
     let formData= new FormData(event.target);
     let dataF=[]
-    dataF.push(`=Now()`);
+    dataF.push(formattedDate);
     formData.forEach((v,k)=>{
       dataF.push(v);
     })
@@ -187,12 +190,15 @@ try {
 
                 // console.log(data[0]);
                 setData(data[0]);
+                checkDuplicateForm(obj.id[0])
                 setmessageDisplay('none')
                 setmobClass("icon-right green")
             }
          else {
           console.log("no data");
           setmessageDisplay('block')
+          setbtnDisable(false)
+          setformSubmit('none')
           setmobClass("icon-right red")
 
           }
@@ -204,6 +210,8 @@ try {
       else{
           clearData();
           setmessageDisplay('none')
+          setformSubmit('none')
+          setbtnDisable(false)
           setmobClass("icon-right")
       }
       
@@ -213,6 +221,35 @@ try {
      }
 
   };
+
+  function checkDuplicateForm(id) {
+    const sheetID = '1HEx_16vWbFDkDW3IpGEnzAT5vPlZ00l8thlLMXy1Wb4';
+    const base = `https://docs.google.com/spreadsheets/d/${sheetID}/gviz/tq?`;
+    const sheetName = 'TodayOnly';
+    //Api Sheet Example 
+    let qu = `Select * WHERE D = '${id}'`;
+    console.log("id ",id);
+    const query = encodeURIComponent(qu);
+    const url = `${base}&sheet=${sheetName}&tq=${query}`;
+    fetch(url)
+    .then(res => res.text())
+    .then(rep => {
+      // console.log(rep);
+      const jsData = JSON.parse(rep.substr(47).slice(0,-2));
+      console.log(jsData);
+      let table= jsData.table.rows;
+      console.log(table);
+      if (table.length) {
+          setformSubmit('block')
+          setbtnDisable(true)
+      }
+      else{
+          setformSubmit('none')
+          setbtnDisable(false)
+      }
+
+    })
+  }
 
   function setData(data) {
     setinputVal({...inputVal, 
@@ -258,6 +295,7 @@ function checkData(val) {
     setSelectedName(e.target.value);
     let pos=inputVal.name.indexOf(e.target.value);
     setSelectedId(inputVal.ID[pos])
+    checkDuplicateForm(inputVal.ID[pos])
     // setinputVal({...inputVal, [e.target.name]: e.target.value });
   };
 
@@ -431,7 +469,10 @@ function checkData(val) {
               {/* <button className="toggle-code" id="submit">
                 Submit
               </button> */}
-              <LodingButton title={'Submit'} loading={loading}/>
+              <p className="redMessage formSubmit" style={{display:formSubmit}}>
+              आज आप फॉर्म डाल चुके है 
+            </p>
+              <LodingButton title={'Submit'} loading={loading} disable={btnDisable}/>
             </summary>
           </details>
          </form>

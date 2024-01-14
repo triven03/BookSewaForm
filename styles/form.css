@@ -76,6 +76,14 @@ button{
   flex-direction: column;
 
 }
+.formSubmit{
+  align-items: center;
+  border: 0.2px solid rgb(252, 73, 73);
+  box-shadow: 0 0 1px 1px rgb(254, 156, 156);
+  width: fit-content;
+  padding: 5px 10px;
+  
+}
 
 .foot{
   margin-top: auto;

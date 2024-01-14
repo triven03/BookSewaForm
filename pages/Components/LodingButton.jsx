@@ -1,9 +1,9 @@
 import React from 'react'
 import PulseLoader from 'react-spinners/PulseLoader';
 
-const LoadingButton = ({title, loading}) => {
+const LoadingButton = ({title, loading, disable}) => {
   return (
-    <button className="toggle-code" id="submit" >
+    <button className="toggle-code" id="submit" disabled={disable}>
     {
       loading ? 
       <PulseLoader
