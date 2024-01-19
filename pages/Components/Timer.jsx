@@ -14,7 +14,7 @@ function Timer() {
   useEffect(() => {
 
     const showFormTimeStart = 68400;  // 7pm  68400
-    const showFormTimeEnd = 85800;   // 9pm   75660
+    const showFormTimeEnd = 75660;   // 9pm   75660
     let fullTime= 86400;
   
       const currentTime = new Date();
@@ -68,9 +68,20 @@ function Timer() {
       {showForm ? (
         <SewaForm/>
       ) : (
-        <div>
-          <h2>Next Form in {Math.floor(countdown / 3600)} H : {Math.floor((countdown / 60)%60)} M :{countdown % 60} seconds</h2>
+        
+        <div className='timeWrapper'>
+            <div className='Timer'>
+              <h1 className='FormDec'>Form Comming Soon.. </h1>
+              <div className="time">
+                  <h2 className='Hour tim'>{Math.floor(countdown / 3600)>=10?Math.floor(countdown / 3600):"0"+Math.floor(countdown / 3600)} Hours </h2>
+                  <h2 className='Min tim'>{Math.floor((countdown / 60)%60)>=10?Math.floor((countdown / 60)%60):"0"+ Math.floor((countdown / 60)%60)} Minutes</h2>
+                  <h2 className='Sec tim'>{Math.floor(countdown % 60)>=10?Math.floor(countdown % 60):"0"+ Math.floor(countdown % 60)} seconds</h2>
+              </div>
+              
+            </div>
+            <footer className='fotter'>Copyright &#169; 2023 Trivendra CG All Right Reserved</footer>
         </div>
+        
       )}
     </div>
   );
