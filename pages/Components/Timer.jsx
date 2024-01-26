@@ -14,7 +14,7 @@ function Timer() {
   useEffect(() => {
 
     document.title = "Sewa Form";
-    const showFormTimeStart = 36000;  // 7pm  68400
+    const showFormTimeStart = 10000;  // 7pm  68400
     const showFormTimeEnd = 84660;   // 9pm   75660
     let fullTime= 86400;
   
@@ -72,7 +72,8 @@ function Timer() {
         
         <div className='timeWrapper'>
             <div className='Timer'>
-              <h1 className='FormDec'>Form Comming Soon.. </h1>
+              <h1 className='FormDec'>सेवा फॉर्म शाम 7 बजे खुलेगा</h1>
+              <h3 className='FormDec1'>अभी सेवा फॉर्म खुलने मे समय है</h3>
               <div className="time">
                   <h2 className='Hour tim'>{Math.floor(countdown / 3600)>=10?Math.floor(countdown / 3600):"0"+Math.floor(countdown / 3600)} Hours </h2>
                   <h2 className='Min tim'>{Math.floor((countdown / 60)%60)>=10?Math.floor((countdown / 60)%60):"0"+ Math.floor((countdown / 60)%60)} Minutes</h2>
