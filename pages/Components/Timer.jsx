@@ -8,12 +8,13 @@ function Timer() {
   const [showForm, setShowForm] = useState(false);
   const [countdown, setCountdown] = useState(0);
 
-
+  
 
 
   useEffect(() => {
 
-    const showFormTimeStart = 68400;  // 7pm  68400
+    document.title = "Sewa Form";
+    const showFormTimeStart = 36000;  // 7pm  68400
     const showFormTimeEnd = 84660;   // 9pm   75660
     let fullTime= 86400;
   
