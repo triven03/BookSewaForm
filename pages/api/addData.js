@@ -1,5 +1,5 @@
 import { google } from 'googleapis';
-import credentials from '../key.json';
+import credentials from '../../files/key.json';
 import moment  from 'moment';
 
   // const data = [
