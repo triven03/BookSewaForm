@@ -146,7 +146,7 @@ try {
           const sheetID = '1_HttrXdduKB0p3JJT4X6QbRfupkMWAXvvIRoCDlUIiU';
           const base = `https://docs.google.com/spreadsheets/d/${sheetID}/gviz/tq?`;
           // const sheetName = 'A';
-          const sheetName = 'B';
+          const sheetName = 'A';
           //Api Sheet Example 
 
           let qu = `Select * WHERE C = "${mobNumber}"`;
