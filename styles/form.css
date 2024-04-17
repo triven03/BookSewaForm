@@ -116,17 +116,24 @@ button{
   height: 100vh;
   width: 100%;
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
   flex-direction: column;
 }
 
 .FormDec{
   margin: 20px;
-  font-size: 2rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.FormDec1{
+  margin: 20px;
+  font-size: 1rem;
 }
 
 .Timer{
+  margin-top: 20%;
   background-color: #d0e9ff;
   min-height: 200px;
   border-radius: 10px;

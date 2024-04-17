@@ -248,7 +248,7 @@ try {
       const jsData = JSON.parse(rep.substr(47).slice(0,-2));
       console.log(jsData);
       let table= jsData.table.rows;
-      console.log(table);
+      // console.log(table);
       if (table.length) {
           setformSubmit('block')
           setbtnDisable(true)
