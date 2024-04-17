@@ -36,9 +36,10 @@ function SewaForm(props) {
     ID: [],
     number:"",
     sambhag: "",
+    sewaTeam: "",
     jila: "",
     block: "",
-    team: "",
+    sewaGroup: "",
     Event: "",
     post: "",
     order: "",
@@ -66,20 +67,21 @@ function SewaForm(props) {
       nameArr.push(parsedData.body[2])
       setinputVal({...inputVal, 
         name:nameArr,
-        sambhag: parsedData.body[4],
-        jila: parsedData.body[5],
-        block: parsedData.body[6],
-        team: parsedData.body[7],
-        Event: parsedData.body[8],
-        post: parsedData.body[9],
-        order: parsedData.body[10],
-        iorder: parsedData.body[11],
+        sambhag: parsedData.body[5],
+        sewaTeam: parsedData.body[6],
+        jila: parsedData.body[7],
+        block: parsedData.body[8],
+        sewaGroup: parsedData.body[9],
+        Event: parsedData.body[10],
+        post: parsedData.body[11],
+        order: parsedData.body[12],
+        iorder: parsedData.body[13],
        }); 
        setmobNum(parsedData.body[1])  
        setSelectedName(parsedData.body[2])  
-       setSelectedEName(parsedData.body[2])  
-       setSelectedId(parsedData.body[3])  
-       setradioInpt({sendyn:parsedData.body[12]})
+       setSelectedEName(parsedData.body[3])  
+       setSelectedId(parsedData.body[4])  
+       setradioInpt({sendyn:parsedData.body[15]})
        setUpdate(true)
 
     }
@@ -167,10 +169,11 @@ try {
                   'name': [],
                   'id': [],
                   'ename':[],
-                  'block': table[0].c[9].v,
-                  'jila': table[0].c[8].v,
+                  'block': table[0].c[10].v,
+                  'sewaTeam': table[0].c[8].v,
+                  'jila': table[0].c[9].v,
                   'sambhag': table[0].c[6].v,
-                  "team": table[0].c[5].v,
+                  "sewaGroup": table[0].c[5].v,
                   "number": checkData(table[0].c[2]),
                  }
   
@@ -265,9 +268,10 @@ try {
     Ename:data.ename,
     number:data.number,
     sambhag: data.sambhag,
+    sewaTeam: data.sewaTeam,
     jila: data.jila,
     block: data.block,
-    team: data.team });   
+    sewaGroup: data.sewaGroup });   
     setSelectedName(data.name[0]);
     setSelectedId(data.id[0])
     setSelectedEName(data.ename[0])
@@ -288,8 +292,9 @@ function checkData(val) {
       Ename: [],
       sambhag: "",
       jila: "",
+      sewaTeam: "",
       block: "",
-      team: ""
+      sewaGroup: ""
     });
 
     setSelectedId("");
@@ -364,7 +369,7 @@ function checkData(val) {
          
             <input
               name="ename"
-              type="text"
+              type="hidden"
               placeholder="आपका Name"
               className="icon-right"
               required
@@ -372,23 +377,25 @@ function checkData(val) {
               readOnly={true}
             />
 
-          <div className="nice-form-group">
-            <label htmlFor="mId">ID</label>
             <input
               name="ID"
               id="mId"
-              type="text"
+              type="hidden"
               placeholder="आपका ID कोड"
               className="icon-right"
               required
               value={selectedId}
               readOnly={true}
             />
-          </div>
+         
 
           <div className="nice-form-group">
             <label htmlFor="sambhag">संभाग</label>
             <input id="sambhag" type="text" name="sambhag"  placeholder="आप किस संभाग से हैं"  readOnly={true} value={inputVal.sambhag}/>
+          </div>
+          <div className="nice-form-group">
+            <label htmlFor="team">सेवा ट्रेंड टीम</label>
+            <input id="team" type="text" name="sewaTeam"  placeholder="आप कौन से ट्रेंड टीम के मेंबर हैं" readOnly={true} value={inputVal.sewaTeam}/>
           </div>
 
           <div className="nice-form-group">
@@ -402,9 +409,11 @@ function checkData(val) {
           </div>
 
           <div className="nice-form-group">
-            <label htmlFor="team">सेवा टीम</label>
-            <input id="team" type="text" name="team"  placeholder="आप कौन सी टीम के मेंबर हैं" readOnly={true} value={inputVal.team}/>
+            <label htmlFor="sewaGroup">सेवा ग्रुप</label>
+            <input id="sewaGroup" type="text" name="sewaGroup"  placeholder="आप कौन से ग्रुप के मेंबर हैं" readOnly={true} value={inputVal.sewaGroup}/>
           </div>
+
+          
 
           <div className="nice-form-group">
             <label htmlFor="Event">आज कितने इवेंट बनाये & टैग किये </label>
