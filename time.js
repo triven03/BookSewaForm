@@ -1,5 +1,8 @@
 import moment  from 'moment';
 
+
+console.log("trivendra");
+
 let time= new Date()
     // const formattedDate = moment(time).format('MM/DD/YYYY H:mm:ss');
     // const formattedDate = moment(time).format('l H:mm:ss');
