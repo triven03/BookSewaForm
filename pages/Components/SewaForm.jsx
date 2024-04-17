@@ -14,6 +14,7 @@ function SewaForm(props) {
   const [range, setRange] = useState("");
   const [selectedId, setSelectedId] = useState("");
   const [selectedName, setSelectedName] = useState("");
+  const [selectedEName, setSelectedEName] = useState("");
 
   const [Members,setMembers]=useState([]);
 
@@ -31,6 +32,7 @@ function SewaForm(props) {
   const [mobClass,setmobClass]=useState("icon-right")
   const [inputVal, setinputVal] = useState({
     name: [],
+    Ename:[],
     ID: [],
     number:"",
     sambhag: "",
@@ -75,6 +77,7 @@ function SewaForm(props) {
        }); 
        setmobNum(parsedData.body[1])  
        setSelectedName(parsedData.body[2])  
+       setSelectedEName(parsedData.body[2])  
        setSelectedId(parsedData.body[3])  
        setradioInpt({sendyn:parsedData.body[12]})
        setUpdate(true)
@@ -146,7 +149,7 @@ try {
           const sheetID = '1_HttrXdduKB0p3JJT4X6QbRfupkMWAXvvIRoCDlUIiU';
           const base = `https://docs.google.com/spreadsheets/d/${sheetID}/gviz/tq?`;
           // const sheetName = 'A';
-          const sheetName = 'B';
+          const sheetName = 'A';
           //Api Sheet Example 
 
           let qu = `Select * WHERE C = "${mobNumber}"`;
@@ -161,25 +164,29 @@ try {
               // console.log(table);
               if (table.length) {
                 let obj={
-                  'name': "",
-                  'id': "",
-                  'block': table[0].c[4].v,
-                  'jila': table[0].c[5].v,
+                  'name': [],
+                  'id': [],
+                  'ename':[],
+                  'block': table[0].c[9].v,
+                  'jila': table[0].c[8].v,
                   'sambhag': table[0].c[6].v,
-                  "team": table[0].c[7].v,
+                  "team": table[0].c[5].v,
                   "number": checkData(table[0].c[2]),
                  }
   
                  let names=[]
                  let id=[]
+                 let ename=[]
                 for (let i = 0; i < table.length; i++) {
                         let na=table[i].c[3].v
                         // id[na]=table[i].c[1].v,
                     id.push(table[i].c[1].v)
                     names.push(na);
+                    ename.push(table[i].c[4].v)
                   }
                   obj["name"]=names;
                   obj["id"]=id;
+                  obj["ename"]=ename;
   
                   data.push(obj);
                 //  setMembers(...Members,obj)
@@ -255,6 +262,7 @@ try {
     setinputVal({...inputVal, 
     name:data.name,
     ID:data.id,
+    Ename:data.ename,
     number:data.number,
     sambhag: data.sambhag,
     jila: data.jila,
@@ -262,6 +270,7 @@ try {
     team: data.team });   
     setSelectedName(data.name[0]);
     setSelectedId(data.id[0])
+    setSelectedEName(data.ename[0])
 }
 
 
@@ -276,6 +285,7 @@ function checkData(val) {
     setinputVal({
       name: [],
       ID: [],
+      Ename: [],
       sambhag: "",
       jila: "",
       block: "",
@@ -284,6 +294,7 @@ function checkData(val) {
 
     setSelectedId("");
     setSelectedName("")
+    setSelectedEName("")
     
   }
 
@@ -295,6 +306,7 @@ function checkData(val) {
     setSelectedName(e.target.value);
     let pos=inputVal.name.indexOf(e.target.value);
     setSelectedId(inputVal.ID[pos])
+    setSelectedEName(inputVal.Ename[pos])
     checkDuplicateForm(inputVal.ID[pos])
     // setinputVal({...inputVal, [e.target.name]: e.target.value });
   };
@@ -349,6 +361,17 @@ function checkData(val) {
             {/* <input id="name" name="name" type="text" placeholder="अपना नाम हिन्दी में लिखें" readOnly={true} value={inputVal.name}/> */}
           </div>
 
+         
+            <input
+              name="ename"
+              type="text"
+              placeholder="आपका Name"
+              className="icon-right"
+              required
+              value={selectedEName}
+              readOnly={true}
+            />
+
           <div className="nice-form-group">
             <label htmlFor="mId">ID</label>
             <input
@@ -361,17 +384,6 @@ function checkData(val) {
               value={selectedId}
               readOnly={true}
             />
-            {/* <input
-              name="ID"
-              id="mId"
-              type="text"
-              placeholder="आपका ID कोड"
-              className="icon-right"
-              required
-              value={inputVal.ID}
-              onChange={handleChange}
-            /> */}
-
           </div>
 
           <div className="nice-form-group">
@@ -413,6 +425,7 @@ function checkData(val) {
             <label htmlFor="iorder">आज कितने इंटरनेशनल आर्डर आये </label>
             <input id="iorder" type="number" name="iorder" placeholder="1234" required value={inputVal.iorder} onChange={handleChange}/>
           </div>
+            <input type="hidden" name="totalOrder" value={Number(inputVal.order)+Number(inputVal.iorder)} />
 
           <fieldset className="nice-form-group">
             <legend>आज के सभी ऑर्डर सेंड कर दिए</legend>
