@@ -8,6 +8,7 @@ function Timer() {
   const [showForm, setShowForm] = useState(false);
   const [countdown, setCountdown] = useState(0);
 
+  const year = new Date().getFullYear();
 
   useEffect(() => {
 
