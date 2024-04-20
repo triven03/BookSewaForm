@@ -8,6 +8,7 @@ function Timer() {
   const [showForm, setShowForm] = useState(false);
   const [countdown, setCountdown] = useState(0);
 
+
   useEffect(() => {
 
     const showFormTimeStart = 0;  // 7pm  68400
@@ -75,7 +76,7 @@ function Timer() {
               </div>
               
             </div>
-            <footer className='fotter'>Copyright &#169; 2023 Trivendra CG All Right Reserved</footer>
+            <footer className='fotter'>Copyright &#169; {year} Trivendra CG All Right Reserved</footer>
         </div>
         
       )}
