@@ -18,7 +18,7 @@ function SewaForm(props) {
   const [month, setMonth] = useState(getMonth());
 
   const [Members,setMembers]=useState([]);
-
+  const year = new Date().getFullYear();
    
 
   const [radioInpt, setradioInpt]=useState({
@@ -522,7 +522,7 @@ function checkData(val) {
          </form>
         </section>
 
-        <footer>Copyright &#169; 2023 Trivendra CG All Right Reserved</footer>
+        <footer>Copyright &#169; {year} Trivendra CG All Right Reserved</footer>
       </main>
     </div>
   );

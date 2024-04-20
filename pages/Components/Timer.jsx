@@ -8,6 +8,7 @@ function Timer() {
   const [showForm, setShowForm] = useState(false);
   const [countdown, setCountdown] = useState(0);
 
+  const year = new Date().getFullYear();
 
   useEffect(() => {
 
@@ -77,7 +78,7 @@ function Timer() {
               </div>
               
             </div>
-            <footer className='fotter'>Copyright &#169; 2023 Trivendra CG All Right Reserved</footer>
+            <footer className='fotter'>Copyright &#169; {year} Trivendra CG All Right Reserved</footer>
         </div>
         
       )}
