@@ -15,6 +15,7 @@ function SewaForm(props) {
   const [selectedId, setSelectedId] = useState("");
   const [selectedName, setSelectedName] = useState("");
   const [selectedEName, setSelectedEName] = useState("");
+  const [month, setMonth] = useState(getMonth());
 
   const [Members,setMembers]=useState([]);
 
@@ -40,6 +41,7 @@ function SewaForm(props) {
     jila: "",
     block: "",
     sewaGroup: "",
+    Dm: "",
     Event: "",
     post: "",
     order: "",
@@ -72,21 +74,34 @@ function SewaForm(props) {
         jila: parsedData.body[7],
         block: parsedData.body[8],
         sewaGroup: parsedData.body[9],
-        Event: parsedData.body[10],
-        post: parsedData.body[11],
-        order: parsedData.body[12],
-        iorder: parsedData.body[13],
+        Dm:parsedData.body[10],
+        Event: parsedData.body[11],
+        post: parsedData.body[12],
+        order: parsedData.body[13],
+        iorder: parsedData.body[14],
        }); 
        setmobNum(parsedData.body[1])  
        setSelectedName(parsedData.body[2])  
        setSelectedEName(parsedData.body[3])  
        setSelectedId(parsedData.body[4])  
-       setradioInpt({sendyn:parsedData.body[15]})
+       setradioInpt({sendyn:parsedData.body[16]})
        setUpdate(true)
 
     }
   }, []);
   
+  function getMonth() {
+    const months = [
+        "January","February","March","April","May","June","July","August","September","October","November","December"
+          ];
+        
+          let mont=new Date().getMonth();
+          let yr=new Date().getFullYear().toString().slice(-2);
+        //   console.log(yr);
+          
+        //   console.log(months[mont]+"_"+yr);
+        return months[mont]+"_"+yr;
+  }
   
   
   const handleSubmit = async (event) => {
@@ -416,7 +431,12 @@ function checkData(val) {
           
 
           <div className="nice-form-group">
-            <label htmlFor="Event">आज कितने इवेंट बनाये & टैग किये </label>
+            <label htmlFor="Dm">आज कितने मैसेज(DM) या मेल किये </label>
+            <input id="Dm" type="number" name="Dm" placeholder="1234" required value={inputVal.Dm} onChange={handleChange} />
+          </div>
+
+          <div className="nice-form-group">
+            <label htmlFor="Event">आज कितने इवेंट बनाये या टैग किये </label>
             <input id="Event" type="number" name="Event" placeholder="1234" required value={inputVal.Event} onChange={handleChange} />
           </div>
 
@@ -485,6 +505,8 @@ function checkData(val) {
               <label htmlFor="noorder">आर्डर नहीं आये</label>
             </div>
           </fieldset>
+
+          <input type="hidden" name="month" value={month} />
 
           <details>
             <summary>

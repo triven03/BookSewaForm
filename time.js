@@ -1,4 +1,4 @@
-import moment  from 'moment';
+
 
 
 console.log("trivendra");
@@ -6,14 +6,14 @@ console.log("trivendra");
 let time= new Date()
     // const formattedDate = moment(time).format('MM/DD/YYYY H:mm:ss');
     // const formattedDate = moment(time).format('l H:mm:ss');
-    console.log("toUtc ",time.toUTCString());
-    console.log("toTimeString ",time.toTimeString());
-    console.log("toISOString ",time.toISOString());
-    console.log("toDateString ",time.toDateString());
-    console.log("toLocaleDateString ",time.toLocaleDateString());
-    console.log("toLocaleString ",time.toLocaleString());
-    console.log("toLocaleString ",time.toLocaleDateString());
-    console.log("time",time);
+    // console.log("toUtc ",time.toUTCString());
+    // console.log("toTimeString ",time.toTimeString());
+    // console.log("toISOString ",time.toISOString());
+    // console.log("toDateString ",time.toDateString());
+    // console.log("toLocaleDateString ",time.toLocaleDateString());
+    // console.log("toLocaleString ",time.toLocaleString());
+    // console.log("toLocaleString ",time.toLocaleDateString());
+    // console.log("time",time);
 
 const showFormTimeStart = 68400;  // 7pm  68400
 const showFormTimeEnd = 75660;   // 9pm   75660
@@ -48,4 +48,25 @@ else if(totalTime > showFormTimeEnd){
     count = fullTime-count ;
 }
 
-console.log(Math.floor(count/3600), "H" ,Math.floor((count/60)%60),"M" ,count%60 , "S");
+
+// console.log(Math.floor(count/3600), "H" ,Math.floor((count/60)%60),"M" ,count%60 , "S");
+
+
+  
+  function getMonth() {
+    const months = [
+        "January","February","March","April","May","June","July","August","September","October","November","December"
+          ];
+        
+          let mont=new Date().getMonth();
+          let yr=new Date().getFullYear().toString().slice(-2);
+        //   console.log(yr);
+          
+        //   console.log(months[mont]+"_"+yr);
+        return months[mont]+"_"+yr;
+  }
+
+
+  
+ 
+  
