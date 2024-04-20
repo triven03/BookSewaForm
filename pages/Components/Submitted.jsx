@@ -9,6 +9,8 @@ export default function Submitted() {
   const [formData, setformData] = useState({});
   const router = useRouter();
 
+  let year = new Date().getFullYear();
+
   useEffect(() => {
     document.title = "Sewa Form";  
     const savedData = router.query.savedData;
@@ -36,6 +38,19 @@ export default function Submitted() {
             <h1 className="center h1">
                 आपका फॉर्म सबमिट हो गया हैं
             </h1>
+            <h3 className="center h3">
+                कबीर, चलते मारग जो गिरै, ताको नाहिं दोस। 
+            </h3>
+            <h3 className="center h3">
+                कहे कबीर बैठा रहै, ता सिर करड़े कोस।
+            </h3>
+            <h3 className="center h3">
+              इसलिए सेवा के लिए प्रयास अवश्य करें।  
+            </h3>
+            <h2 className="center">
+            सत साहेब जी...! 
+            </h2>
+          
 
             <div className='linkDiv'>
                 <div className="link" onClick={handleEditResponse}>
@@ -49,7 +64,7 @@ export default function Submitted() {
            
           </section>
   
-          <footer className="foot">Copyright &#169; 2023 Trivendra CG All Right Reserved</footer>
+          <footer className="foot">Copyright &#169; {year} Trivendra CG All Right Reserved</footer>
         </main>
       </div>
   )

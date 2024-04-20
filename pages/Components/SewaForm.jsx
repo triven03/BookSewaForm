@@ -18,7 +18,7 @@ function SewaForm(props) {
   const [month, setMonth] = useState(getMonth());
 
   const [Members,setMembers]=useState([]);
-  const year = new Date().getFullYear();
+  let year = new Date().getFullYear();
    
 
   const [radioInpt, setradioInpt]=useState({
