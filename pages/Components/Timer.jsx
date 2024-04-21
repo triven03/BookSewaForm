@@ -70,7 +70,8 @@ function Timer() {
         
         <div className='timeWrapper'>
             <div className='Timer'>
-              <h1 className='FormDec'>Form Comming Soon.. </h1>
+              <h1 className='FormDec'>फॉर्म	खुलने का समय शाम 7 बजे है </h1>
+              <h2 className='center'>अभी	फॉर्म	खुलने मे समय है	</h2>
               <div className="time">
                   <h2 className='Hour tim'>{Math.floor(countdown / 3600)>=10?Math.floor(countdown / 3600):"0"+Math.floor(countdown / 3600)} Hours </h2>
                   <h2 className='Min tim'>{Math.floor((countdown / 60)%60)>=10?Math.floor((countdown / 60)%60):"0"+ Math.floor((countdown / 60)%60)} Minutes</h2>
