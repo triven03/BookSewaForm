@@ -63,15 +63,6 @@ function Timer() {
   }, []);
 
   return (
-    <>
-    <Head>
-      <title>Custom App Title</title>
-      <meta name="description" content="CG Daily Book Order Sewa Report Form" />
-      <meta property="og:title" content="Book Order Sewa Form" />
-      <meta property="og:description" content="CG Daily Book Order Sewa Report Form" />
-      <meta property="og:url" content="https://bookordersewaform.netlify.app/" />
-    </Head>
-
     <div className="App">
       {showForm ? (
         <SewaForm/>
@@ -92,7 +83,6 @@ function Timer() {
         
       )}
     </div>
-    </>
   );
 }
 
