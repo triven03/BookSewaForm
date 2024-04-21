@@ -43,6 +43,7 @@ button{
 .link{
   margin: 10px;
   text-decoration: none;
+  color:rgb(0, 119, 255);
 }
 
 .link:hover{
@@ -59,6 +60,10 @@ button{
 }
 .h3{
   margin: 5px;
+}
+.h2{
+  margin: 5px;
+  font-weight: bold
 }
 
 .linkDiv{

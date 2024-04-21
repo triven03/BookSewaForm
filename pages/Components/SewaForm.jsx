@@ -166,7 +166,7 @@ try {
           const sheetID = '1_HttrXdduKB0p3JJT4X6QbRfupkMWAXvvIRoCDlUIiU';
           const base = `https://docs.google.com/spreadsheets/d/${sheetID}/gviz/tq?`;
           // const sheetName = 'A';
-          const sheetName = 'A';
+          const sheetName = 'All';
           //Api Sheet Example 
 
           let qu = `Select * WHERE C = "${mobNumber}"`;
@@ -250,9 +250,9 @@ try {
   function checkDuplicateForm(id) {
     const sheetID = '1HEx_16vWbFDkDW3IpGEnzAT5vPlZ00l8thlLMXy1Wb4';
     const base = `https://docs.google.com/spreadsheets/d/${sheetID}/gviz/tq?`;
-    const sheetName = 'TodayOnly';
+    const sheetName = 'Map';
     //Api Sheet Example 
-    let qu = `Select * WHERE D = '${id}'`;
+    let qu = `Select * WHERE F = '${id}'`;
     console.log("id ",id);
     const query = encodeURIComponent(qu);
     const url = `${base}&sheet=${sheetName}&tq=${query}`;

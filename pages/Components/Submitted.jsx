@@ -47,7 +47,7 @@ export default function Submitted() {
             <h3 className="center h3">
               इसलिए सेवा के लिए प्रयास अवश्य करें।  
             </h3>
-            <h2 className="center">
+            <h2 className="center h2">
             सत साहेब जी...! 
             </h2>
           
