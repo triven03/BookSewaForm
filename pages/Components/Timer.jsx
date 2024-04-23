@@ -79,7 +79,7 @@ function Timer() {
               </div>
               
             </div>
-            <footer className='fotter'>Copyright &#169; {year} Trivendra CG All Right Reserved</footer>
+            <footer className='fotter'>Copyright &#169; {year} CG Social Media All Right Reserved</footer>
         </div>
         
       )}

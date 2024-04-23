@@ -522,7 +522,7 @@ function checkData(val) {
          </form>
         </section>
 
-        <footer>Copyright &#169; {year} Trivendra CG All Right Reserved</footer>
+        <footer>Copyright &#169; {year} CG Social Media All Right Reserved</footer>
       </main>
     </div>
   );

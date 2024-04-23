@@ -64,7 +64,7 @@ export default function Submitted() {
            
           </section>
   
-          <footer className="foot">Copyright &#169; {year} Trivendra CG All Right Reserved</footer>
+          <footer className="foot">Copyright &#169; {year} CG Social Media All Right Reserved</footer>
         </main>
       </div>
   )
