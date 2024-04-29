@@ -487,7 +487,7 @@ function checkData(val) {
               type="radio" 
               name="sendyn" 
               id="noorder" 
-              value="आर्डर नहीं आये" 
+              value="आर्डर नहीं आए" 
               checked={radioInpt.sendyn === "आर्डर नहीं आए"}
               onChange={handleChangeRadio}
               />
