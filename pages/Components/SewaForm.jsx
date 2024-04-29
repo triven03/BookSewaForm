@@ -446,12 +446,12 @@ function checkData(val) {
           </div>
 
           <div className="nice-form-group">
-            <label htmlFor="order">आज कितने भारतीय आर्डर आये </label>
+            <label htmlFor="order">आज कितने भारतीय आर्डर आए</label>
             <input id="order" type="number" name="order" placeholder="1234" required value={inputVal.order} onChange={handleChange}/>
           </div>
 
           <div className="nice-form-group">
-            <label htmlFor="iorder">आज कितने इंटरनेशनल आर्डर आये </label>
+            <label htmlFor="iorder">आज कितने इंटरनेशनल आर्डर आए</label>
             <input id="iorder" type="number" name="iorder" placeholder="1234" required value={inputVal.iorder} onChange={handleChange}/>
           </div>
             <input type="hidden" name="totalOrder" value={Number(inputVal.order)+Number(inputVal.iorder)} />
@@ -470,17 +470,7 @@ function checkData(val) {
               <label htmlFor="yes">हाँ </label>
             </div>
 
-            <div className="nice-form-group">
-              <input 
-              type="radio" 
-              name="sendyn" id="no" 
-              value="नहीं" 
-              checked={radioInpt.sendyn === "नहीं"}
-              onChange={handleChangeRadio}
-              />
-              <label htmlFor="no">नहीं</label>
-            </div>
-
+            
             <div className="nice-form-group">
               <input 
               type="radio" 
@@ -498,11 +488,11 @@ function checkData(val) {
               name="sendyn" 
               id="noorder" 
               value="आर्डर नहीं आये" 
-              checked={radioInpt.sendyn === "आर्डर नहीं आये"}
+              checked={radioInpt.sendyn === "आर्डर नहीं आए"}
               onChange={handleChangeRadio}
               />
 
-              <label htmlFor="noorder">आर्डर नहीं आये</label>
+              <label htmlFor="noorder">आर्डर नहीं आए</label>
             </div>
           </fieldset>
 
