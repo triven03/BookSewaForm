@@ -431,17 +431,17 @@ function checkData(val) {
           
 
           <div className="nice-form-group">
-            <label htmlFor="Dm">आज कितने मैसेज(DM) या मेल किये </label>
+            <label htmlFor="Dm">आज कितने मैसेज(DM) / मेल किए </label>
             <input id="Dm" type="number" name="Dm" placeholder="1234" required value={inputVal.Dm} onChange={handleChange} />
           </div>
 
           <div className="nice-form-group">
-            <label htmlFor="Event">आज कितने इवेंट बनाये या टैग किये </label>
+            <label htmlFor="Event">आज कितने इवेंट बनाये / टैग किए </label>
             <input id="Event" type="number" name="Event" placeholder="1234" required value={inputVal.Event} onChange={handleChange} />
           </div>
 
           <div className="nice-form-group">
-            <label htmlFor="post">आज कितने पोस्ट किये </label>
+            <label htmlFor="post">आज कितने पोस्ट किए </label>
             <input id="post" type="number" name="post" placeholder="1234" required value={inputVal.post} onChange={handleChange}/>
           </div>
 
