@@ -2,8 +2,13 @@ import React from 'react'
 import PulseLoader from 'react-spinners/PulseLoader';
 
 const LoadingButton = ({title, loading, disable}) => {
+  let flag;
+  if (loading || disable) {
+    flag = true;
+  }
+
   return (
-    <button className="toggle-code" id="submit" disabled={disable}>
+    <button className="toggle-code" id="submit" disabled={flag}>
     {
       loading ? 
       <PulseLoader
