@@ -70,7 +70,8 @@ import moment  from 'moment';
 
       
     });
-  }
+  })
+}
   
   
     function updateData(newData,range) {
