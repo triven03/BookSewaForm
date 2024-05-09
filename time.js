@@ -15,7 +15,7 @@ let time= new Date()
     // console.log("toLocaleString ",time.toLocaleDateString());
     // console.log("time",time);
 
-const showFormTimeStart = 68400;  // 7pm  68400
+const showFormTimeStart = 684;  // 7pm  68400
 const showFormTimeEnd = 75660;   // 9pm   75660
 let fullTime= 86400;
 
