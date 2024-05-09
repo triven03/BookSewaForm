@@ -336,6 +336,9 @@ function checkData(val) {
     setradioInpt({[e.target.name]: e.target.value });
   };
 
+  let orderNumber = isNaN(Number(inputVal.order)) ? 0 : Number(inputVal.order);
+  let iorderNumber = isNaN(Number(inputVal.iorder)) ? 0 : Number(inputVal.iorder);
+
 
   return (
     <div className="demo-page" id="mainPage">
@@ -370,7 +373,7 @@ function checkData(val) {
 
           <div className="nice-form-group">
             <label htmlFor="name">नाम</label>
-            <select value={selectedName}  name="name" id="name" onChange={handleChangeName} >
+            <select value={selectedName}  name="name" id="name" required onChange={handleChangeName} >
               {inputVal.name.map(option => (
                 // <option key={option.id} value={option.name} id={option.id} >
                 <option key={option} value={option}  >
@@ -454,8 +457,8 @@ function checkData(val) {
             <label htmlFor="iorder">आज कितने इंटरनेशनल आर्डर आये </label>
             <input id="iorder" type="number" name="iorder" placeholder="1234" required value={inputVal.iorder} onChange={handleChange}/>
           </div>
-            <input type="hidden" name="totalOrder" value={Number(inputVal.order)+Number(inputVal.iorder)} />
-
+            {/* <input type="hidden" name="totalOrder" value={Number(inputVal.order)+Number(inputVal.iorder)} /> */}
+          <input type="hidden" name="totalOrder" value={orderNumber + iorderNumber} />
           <fieldset className="nice-form-group">
             <legend>आज के सभी ऑर्डर सेंड कर दिए</legend>
             <div className="nice-form-group">
