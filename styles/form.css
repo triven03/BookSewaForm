@@ -135,7 +135,7 @@ button{
 
 .FormDec{
   margin: 20px;
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   font-weight: bold;
 }
 
@@ -145,6 +145,7 @@ button{
 }
 
 .Timer{
+  max-width: 95%;
   margin-top: 20%;
   background-color: #d0e9ff;
   min-height: 200px;
@@ -165,10 +166,40 @@ button{
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 50px;
+  /* margin-top: 50px; */
+  margin-bottom: 10px;
 }
 
 .fotter{
   position: absolute;
   bottom: 0;
 }
+
+#sewadetails{
+  padding-top: 0;
+}
+
+#dummyFormH1{
+  border: 2px solid #dcdcdc;
+  padding: 0.3rem 0.5rem;
+  border-radius: 0.3rem;
+  }
+
+  .container{
+    display: flex;
+    flex-direction: column;
+    width: max-content;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #dummyFormTimerH1{
+    margin: auto;
+    margin-top: 10px;
+    width: fit-content;
+    border: 2px solid #bcbcbc;
+    padding: 0.7rem;
+    border-radius: 0.3rem;
+    font-size: 1.2rem;
+    }

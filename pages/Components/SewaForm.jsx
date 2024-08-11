@@ -4,7 +4,6 @@ import React, {  useState,useEffect} from "react";
 import { useRouter } from 'next/router';
 import moment  from 'moment';
 import LodingButton from './LodingButton'
-import { PiWarningOctagonFill } from "react-icons/pi";
 
 function SewaForm(props) {
   const router = useRouter();
@@ -17,7 +16,8 @@ function SewaForm(props) {
   const [selectedEName, setSelectedEName] = useState("");
   const [month, setMonth] = useState(getMonth());
 
-  const [Members,setMembers]=useState([]);
+  const [selectedGroup, setSelectedGroup] = useState("");
+
   let year = new Date().getFullYear();
    
 
@@ -40,7 +40,7 @@ function SewaForm(props) {
     sewaTeam: "",
     jila: "",
     block: "",
-    sewaGroup: "",
+    sewaGroup: [],
     Dm: "",
     Event: "",
     post: "",
@@ -50,7 +50,7 @@ function SewaForm(props) {
   });
   
   useEffect(() => {
-    document.title = "Sewa Form";  
+    document.title = "Book Sewa Form";  
     
     // if (localStorage.getItem("Members")){
 
@@ -120,7 +120,7 @@ function SewaForm(props) {
 
     console.log(dataF);
 try {
-      let obj=JSON.stringify(dataF)
+      // let obj=JSON.stringify(dataF)
       const response = await fetch('/api/addData', {
       method: 'POST',
       headers: {
@@ -141,6 +141,11 @@ try {
         query: { savedData: JSON.stringify(data)},
       });
       // router.push('/Submitted');
+    }
+    else if (data.id.status==500) {
+      setLoading(false);
+      setformSubmit('block')
+      setbtnDisable(true)
     }
     
 
@@ -188,23 +193,30 @@ try {
                   'sewaTeam': table[0].c[8].v,
                   'jila': table[0].c[9].v,
                   'sambhag': table[0].c[6].v,
-                  "sewaGroup": table[0].c[5].v,
+                  "sewaGroup": [],
                   "number": checkData(table[0].c[2]),
                  }
-  
+                 
+                 
+
                  let names=[]
                  let id=[]
                  let ename=[]
+                 let sewaGroup=[]
+
                 for (let i = 0; i < table.length; i++) {
                         let na=table[i].c[3].v
                         // id[na]=table[i].c[1].v,
                     id.push(table[i].c[1].v)
                     names.push(na);
                     ename.push(table[i].c[4].v)
+                    sewaGroup.push(table[i].c[5].v)
                   }
+
                   obj["name"]=names;
                   obj["id"]=id;
                   obj["ename"]=ename;
+                  obj["sewaGroup"]=sewaGroup;
   
                   data.push(obj);
                 //  setMembers(...Members,obj)
@@ -290,6 +302,7 @@ try {
     setSelectedName(data.name[0]);
     setSelectedId(data.id[0])
     setSelectedEName(data.ename[0])
+    setSelectedGroup(data.sewaGroup[0])
 }
 
 
@@ -309,7 +322,7 @@ function checkData(val) {
       jila: "",
       sewaTeam: "",
       block: "",
-      sewaGroup: ""
+      sewaGroup: []
     });
 
     setSelectedId("");
@@ -327,6 +340,7 @@ function checkData(val) {
     let pos=inputVal.name.indexOf(e.target.value);
     setSelectedId(inputVal.ID[pos])
     setSelectedEName(inputVal.Ename[pos])
+    setSelectedGroup(inputVal.sewaGroup[pos])
     checkDuplicateForm(inputVal.ID[pos])
     // setinputVal({...inputVal, [e.target.name]: e.target.value });
   };
@@ -344,8 +358,8 @@ function checkData(val) {
     <div className="demo-page" id="mainPage">
       <main className= "demo-page-content">
         
-        <section>
          <form action="#" onSubmit={handleSubmit} >
+        <section id="memberDetails">
           <div className="href-target" id="structure"></div>
           <h1>
             CG Book Order Sewa Form
@@ -428,92 +442,97 @@ function checkData(val) {
 
           <div className="nice-form-group">
             <label htmlFor="sewaGroup">सेवा ग्रुप</label>
-            <input id="sewaGroup" type="text" name="sewaGroup"  placeholder="आप कौन से ग्रुप के मेंबर हैं" readOnly={true} value={inputVal.sewaGroup}/>
+            <input id="sewaGroup" type="text" name="sewaGroup"  placeholder="आप कौन से ग्रुप के मेंबर हैं" readOnly={true} value={selectedGroup}/>
           </div>
 
-          
+          </section>
 
-          <div className="nice-form-group">
-            <label htmlFor="Dm">आज कितने मैसेज(DM) / मेल किए </label>
-            <input id="Dm" type="number" name="Dm" placeholder="1234" required value={inputVal.Dm} onChange={handleChange} />
-          </div>
+          <section id="sewadetails">
 
-          <div className="nice-form-group">
-            <label htmlFor="Event">आज कितने इवेंट बनाये / टैग किए </label>
-            <input id="Event" type="number" name="Event" placeholder="1234" required value={inputVal.Event} onChange={handleChange} />
-          </div>
+              <div className="nice-form-group">
+                <label htmlFor="Dm">आज कितने मैसेज(DM) / मेल किए </label>
+                <input id="Dm" type="number" name="Dm" placeholder="1234" required value={inputVal.Dm} onChange={handleChange} />
+              </div>
 
-          <div className="nice-form-group">
-            <label htmlFor="post">आज कितने पोस्ट किए </label>
-            <input id="post" type="number" name="post" placeholder="1234" required value={inputVal.post} onChange={handleChange}/>
-          </div>
+              <div className="nice-form-group">
+                <label htmlFor="Event">आज कितने इवेंट बनाये / टैग किए </label>
+                <input id="Event" type="number" name="Event" placeholder="1234" required value={inputVal.Event} onChange={handleChange} />
+              </div>
 
-          <div className="nice-form-group">
-            <label htmlFor="order">आज कितने भारतीय आर्डर आए</label>
-            <input id="order" type="number" name="order" placeholder="1234" required value={inputVal.order} onChange={handleChange}/>
-          </div>
+              <div className="nice-form-group">
+                <label htmlFor="post">आज कितने पोस्ट किए </label>
+                <input id="post" type="number" name="post" placeholder="1234" required value={inputVal.post} onChange={handleChange}/>
+              </div>
 
-          <div className="nice-form-group">
-            <label htmlFor="iorder">आज कितने इंटरनेशनल आर्डर आए</label>
-            <input id="iorder" type="number" name="iorder" placeholder="1234" required value={inputVal.iorder} onChange={handleChange}/>
-          </div>
-            {/* <input type="hidden" name="totalOrder" value={Number(inputVal.order)+Number(inputVal.iorder)} /> */}
-          <input type="hidden" name="totalOrder" value={orderNumber + iorderNumber} />
-          <fieldset className="nice-form-group">
-            <legend>आज के सभी ऑर्डर सेंड कर दिए</legend>
-            <div className="nice-form-group">
-              <input 
-              type="radio" 
-              name="sendyn" 
-              id="yes"  
-              value="हाँ"
-              checked={radioInpt.sendyn === "हाँ"}
-              onChange={handleChangeRadio}
-              />
-              <label htmlFor="yes">हाँ </label>
-            </div>
+              <div className="nice-form-group">
+                <label htmlFor="order">आज कितने भारतीय आर्डर आए</label>
+                <input id="order" type="number" name="order" placeholder="1234" required value={inputVal.order} onChange={handleChange}/>
+              </div>
 
-            
-            <div className="nice-form-group">
-              <input 
-              type="radio" 
-              name="sendyn" 
-              id="send" 
-              value="9.30 के पहले सेंड" 
-              checked={radioInpt.sendyn === "9.30 के पहले सेंड"}
-              onChange={handleChangeRadio}/>
-              <label htmlFor="send">9.30 के पहले सेंड कर दूंगा / दूंगी </label>
-            </div>
+              <div className="nice-form-group">
+                <label htmlFor="iorder">आज कितने इंटरनेशनल आर्डर आए</label>
+                <input id="iorder" type="number" name="iorder" placeholder="1234" required value={inputVal.iorder} onChange={handleChange}/>
+              </div>
+                {/* <input type="hidden" name="totalOrder" value={Number(inputVal.order)+Number(inputVal.iorder)} /> */}
+              <input type="hidden" name="totalOrder" value={orderNumber + iorderNumber} />
+              <fieldset className="nice-form-group">
+                <legend>आज के सभी ऑर्डर सेंड कर दिए</legend>
+                <div className="nice-form-group">
+                  <input 
+                  type="radio" 
+                  name="sendyn" 
+                  id="yes"  
+                  value="हाँ"
+                  checked={radioInpt.sendyn === "हाँ"}
+                  onChange={handleChangeRadio}
+                  />
+                  <label htmlFor="yes">हाँ </label>
+                </div>
 
-            <div className="nice-form-group">
-              <input 
-              type="radio" 
-              name="sendyn" 
-              id="noorder" 
-              value="आर्डर नहीं आए" 
-              checked={radioInpt.sendyn === "आर्डर नहीं आए"}
-              onChange={handleChangeRadio}
-              />
+                
+                <div className="nice-form-group">
+                  <input 
+                  type="radio" 
+                  name="sendyn" 
+                  id="send" 
+                  value="9.30 के पहले सेंड" 
+                  checked={radioInpt.sendyn === "9.30 के पहले सेंड"}
+                  onChange={handleChangeRadio}/>
+                  <label htmlFor="send">9.30 के पहले सेंड कर दूंगा / दूंगी </label>
+                </div>
 
-              <label htmlFor="noorder">आर्डर नहीं आए</label>
-            </div>
-          </fieldset>
+                <div className="nice-form-group">
+                  <input 
+                  type="radio" 
+                  name="sendyn" 
+                  id="noorder" 
+                  value="आर्डर नहीं आए" 
+                  checked={radioInpt.sendyn === "आर्डर नहीं आए"}
+                  onChange={handleChangeRadio}
+                  />
 
-          <input type="hidden" name="month" value={month} />
+                  <label htmlFor="noorder">आर्डर नहीं आए</label>
+                </div>
+              </fieldset>
 
-          <details>
-            <summary>
-              {/* <button className="toggle-code" id="submit">
-                Submit
-              </button> */}
-              <p className="redMessage formSubmit" style={{display:formSubmit}}>
-              आज आप फॉर्म डाल चुके है 
-            </p>
-              <LodingButton title={'Submit'} loading={loading} disable={btnDisable}/>
-            </summary>
-          </details>
+              <input type="hidden" name="month" value={month} />
+          </section>
+
+          <section id="lastBtn">
+          <label>बंदीछोड़ सतगुरु रामपाल जी महाराज जी की जय</label>
+            <details>
+              <summary>
+                {/* <button className="toggle-code" id="submit">
+                  Submit
+                </button> */}
+                <p className="redMessage formSubmit" style={{display:formSubmit}}>
+                आज आप फॉर्म डाल चुके हैं 
+              </p>
+                <LodingButton title={'Submit'} loading={loading} disable={btnDisable}/>
+              </summary>
+            </details>
+          </section>
          </form>
-        </section>
 
         <footer>Copyright &#169; {year} CG Social Media All Right Reserved</footer>
       </main>

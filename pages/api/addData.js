@@ -37,8 +37,14 @@ import moment  from 'moment';
         let table= jsData.table.rows;
         // console.log(table);
         if (table.length) {
-    
-          reject("err");
+
+          let errobj = {
+            status: 500,
+            body: [],
+            range: "no range"
+          };
+          resolve(errobj);
+          // reject("err");
         }
         else{
           sheets.spreadsheets.values.append({
@@ -51,11 +57,17 @@ import moment  from 'moment';
             },
           }, (err, response) => {
             if (err) {
+              let errobj = {
+                status: 500,
+                body: [],
+                range: "no range"
+              };
+
               console.error(err);
-              reject(err);
+              resolve(errobj);
             }
       
-            var resobj = {
+            let resobj = {
               status: response.status,
               body: JSON.parse(response.config.body).values[0],
               range: response.data.updates.updatedRange

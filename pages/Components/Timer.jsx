@@ -1,6 +1,6 @@
 import SewaForm from './SewaForm'
 import React, { useEffect, useState } from 'react';
-import Head from 'next/head';
+import Link from 'next/link';
 
 function Timer() {
 //   const showFormTimeStart = "21:16:00"; // Example time: 07:00 PM
@@ -69,6 +69,10 @@ function Timer() {
         
         <div className='timeWrapper'>
             <div className='Timer'>
+                  <h1 className="center h1" id='dummyFormTimerH1'>
+                  बुक ऑर्डर सेवा फॉर्म
+                  </h1>
+
               <h1 className='FormDec'>फॉर्म	खुलने का समय शाम 7 बजे है </h1>
               <h2 className='center'>अभी	फॉर्म	खुलने मे समय है	</h2>
               <div className="time">
@@ -76,6 +80,15 @@ function Timer() {
                   <h2 className='Min tim'>{Math.floor((countdown / 60)%60)>=10?Math.floor((countdown / 60)%60):"0"+ Math.floor((countdown / 60)%60)} Minutes</h2>
                   <h2 className='Sec tim'>{Math.floor(countdown % 60)>=10?Math.floor(countdown % 60):"0"+ Math.floor(countdown % 60)} seconds</h2>
               </div>
+
+              <h2 className='center' id='lastH2'>डुप्लीकेट टेस्टिंग फॉर्म लिंक</h2>
+
+                <div className='linkDiv'>
+                  <Link href="https://dummysewaform.netlify.app/" className="link">
+                      Duplicate BO Form
+                  </Link>
+                </div>
+
               
             </div>
             <footer className='fotter'>Copyright &#169; {year} CG Social Media All Right Reserved</footer>

@@ -12,7 +12,7 @@ export default function Submitted() {
   let year = new Date().getFullYear();
 
   useEffect(() => {
-    document.title = "Sewa Form";  
+    document.title = "Book Sewa Form";  
     const savedData = router.query.savedData;
 
     if (savedData) {
@@ -35,8 +35,12 @@ export default function Submitted() {
         <main className="demo-page-content" id="main">
           
           <section className="container">
+            <h1 className="center h1" id='dummyFormH1'>
+                CG Book Sewa Form
+            </h1>
+
             <h1 className="center h1">
-                आपका फॉर्म सबमिट हो गया हैं
+                आपका फॉर्म सबमिट हो गया है
             </h1>
             <h3 className="center h3">
                 कबीर, चलते मारग जो गिरै, ताको नाहिं दोस। 
