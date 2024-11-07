@@ -450,29 +450,42 @@ function checkData(val) {
           <section id="sewadetails">
 
               <div className="nice-form-group">
-                <label htmlFor="Dm">आज कितने मैसेज(DM) / मेल किए </label>
+                <label htmlFor="Dm">आज कितने मैसेज(DM) / मेल किए ?</label>
                 <input id="Dm" type="number" name="Dm" placeholder="1234" required value={inputVal.Dm} onChange={handleChange} />
               </div>
 
               <div className="nice-form-group">
-                <label htmlFor="Event">आज कितने इवेंट बनाये / टैग किए </label>
+                <label htmlFor="Event">आज कितने इवेंट बनाये / टैग किए ?</label>
                 <input id="Event" type="number" name="Event" placeholder="1234" required value={inputVal.Event} onChange={handleChange} />
               </div>
 
               <div className="nice-form-group">
-                <label htmlFor="post">आज कितने पोस्ट किए </label>
+                <label htmlFor="post">आज कितने पोस्ट किए ?</label>
                 <input id="post" type="number" name="post" placeholder="1234" required value={inputVal.post} onChange={handleChange}/>
               </div>
 
               <div className="nice-form-group">
-                <label htmlFor="order">आज कितने भारतीय आर्डर आए</label>
+                <label htmlFor="order">आज आपने बुक आर्डर ऐप में कितने भारतीय आर्डर भेजे ?</label>
                 <input id="order" type="number" name="order" placeholder="1234" required value={inputVal.order} onChange={handleChange}/>
               </div>
 
+              {/* <div className="nice-form-group">
+                <label htmlFor="order">आज कितने भारतीय आर्डर आए</label>
+                <input id="order" type="number" name="order" placeholder="1234" required value={inputVal.order} onChange={handleChange}/>
+              </div> */}
+
               <div className="nice-form-group">
-                <label htmlFor="iorder">आज कितने इंटरनेशनल आर्डर आए</label>
+                <label htmlFor="iorder">आज आपने बुक आर्डर ऐप में कितने इंटरनेशनल आर्डर भेजे ?</label>
                 <input id="iorder" type="number" name="iorder" placeholder="1234" required value={inputVal.iorder} onChange={handleChange}/>
               </div>
+
+              {/* <div className="nice-form-group">
+                <label htmlFor="iorder">आज कितने इंटरनेशनल आर्डर आए</label>
+                <input id="iorder" type="number" name="iorder" placeholder="1234" required value={inputVal.iorder} onChange={handleChange}/>
+              </div> */}
+
+
+
                 {/* <input type="hidden" name="totalOrder" value={Number(inputVal.order)+Number(inputVal.iorder)} /> */}
               <input type="hidden" name="totalOrder" value={orderNumber + iorderNumber} />
               <fieldset className="nice-form-group">

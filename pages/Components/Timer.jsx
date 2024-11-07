@@ -12,16 +12,16 @@ function Timer() {
 
   useEffect(() => {
 
-    const showFormTimeStart = 68400;  // 7pm  68400
-    const showFormTimeEnd = 75666;   // 9pm   75660
+    const showFormTimeStart = 68400;       // 7pm  68400
+    const showFormTimeEnd = 86398;        // 9pm   75660   //11.59 pm 86398
     let fullTime= 86400;
-      const currentTime = new Date();
-      let h=currentTime.getHours();
-      let m=currentTime.getMinutes();
-      let s=currentTime.getSeconds();
+    const currentTime = new Date();
+    let h=currentTime.getHours();
+    let m=currentTime.getMinutes();
+    let s=currentTime.getSeconds();
   
-      let totalTime = h*3600 + m *60 + s
-      let count;
+    let totalTime = h*3600 + m *60 + s
+    let count;
 
     if (showFormTimeStart < totalTime && totalTime < showFormTimeEnd) {
       // Display the form
