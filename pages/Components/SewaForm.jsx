@@ -508,10 +508,10 @@ function checkData(val) {
                   type="radio" 
                   name="sendyn" 
                   id="send" 
-                  value="9.30 के पहले सेंड" 
-                  checked={radioInpt.sendyn === "9.30 के पहले सेंड"}
+                  value="12 के पहले सेंड" 
+                  checked={radioInpt.sendyn === "12 के पहले सेंड"}
                   onChange={handleChangeRadio}/>
-                  <label htmlFor="send">9.30 के पहले सेंड कर दूंगा / दूंगी </label>
+                  <label htmlFor="send">12 बजे के पहले सेंड कर दूंगा / दूंगी </label>
                 </div>
 
                 <div className="nice-form-group">
