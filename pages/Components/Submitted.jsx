@@ -58,11 +58,11 @@ export default function Submitted() {
 
             <div className='linkDiv'>
                 <div className="link" onClick={handleEditResponse}>
-                    Edit Your Responce
+                    Edit Your Response
                 </div>
 
                 <Link href="/" className="link">
-                    Submit Another Responce
+                    Submit Another Response
                 </Link>
             </div>
            
