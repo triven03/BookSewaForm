@@ -90,6 +90,35 @@ function SewaForm(props) {
     }
   }, []);
   
+  function getCustomDate() {
+    const currentDate = new Date();
+    const currentHour = currentDate.getHours();
+
+
+    // Agar current time 7 PM se 11:59 PM ke beech hai
+    if (currentHour >= 19) {
+
+      const month = currentDate.getMonth() + 1;
+      const day = currentDate.getDate();
+      const year = currentDate.getFullYear();
+
+    // Format the date as mm/dd/yyyy
+        return `${month}/${day}/${year}`;
+    } else {
+        // Agar current time 12 AM se 6 AM ke beech hai
+        const previousDate = new Date();
+        previousDate.setDate(currentDate.getDate() - 1);
+        // const formattedDate = moment(previousDate).format('l');
+        const month = previousDate.getMonth() + 1;
+        const day = previousDate.getDate();
+        const year = previousDate.getFullYear();
+
+    // Format the date as mm/dd/yyyy
+        return `${month}/${day}/${year}`;
+
+    }
+}
+
   function getMonth() {
     const months = [
         "January","February","March","April","May","June","July","August","September","October","November","December"
@@ -108,8 +137,9 @@ function SewaForm(props) {
     event.preventDefault();
   
     setLoading(true)
-    let time= new Date()
-    const formattedDate = moment(time).format('l');
+    // let time= new Date()
+    // const formattedDate = moment(time).format('l');
+    const formattedDate = getCustomDate()
     // let localdate=time.toLocaleDateString();
     let formData= new FormData(event.target);
     let dataF=[]
