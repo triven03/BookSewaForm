@@ -12,7 +12,7 @@ function Timer() {
 
   useEffect(() => {
 
-    const showFormTimeStart = 68400;       // 7pm  68400
+    const showFormTimeStart = 0;       // 7pm  68400
     const showFormTimeEnd = 86398;        // 9pm   75660   //11.59 pm 86398
     let fullTime= 86400;
     const currentTime = new Date();

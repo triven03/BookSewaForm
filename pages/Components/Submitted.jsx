@@ -6,7 +6,7 @@ import { useRouter } from 'next/router';
 
 
 export default function Submitted() {
-  const [formData, setformData] = useState({});
+  const [formData, setformData] = useState();
   const router = useRouter();
 
   let year = new Date().getFullYear();
@@ -51,6 +51,13 @@ export default function Submitted() {
             <h3 className="center h3">
               इसलिए सेवा के लिए प्रयास अवश्य करें।  
             </h3>
+
+            <div className="nice-form-group" id='token'>
+                  <h2 id='tokenText'>
+                    {formData ? `आज के कुल ऑर्डर  : ${formData.body[15]}` : 'Loading...'}
+                  </h2>
+            </div>
+
             <h2 className="center h2">
             सत साहेब जी...! 
             </h2>
